@@ -1,6 +1,9 @@
 const books = [];
 const RENDER_EVENT = 'render-book';
 
+const SAVED_EVENT = 'saved-book';
+const STORAGE_KEY = 'BOOK_APPS';
+
 document.addEventListener('DOMContentLoaded', function () {
     const submitForm = document.getElementById('inputBookForm');
     submitForm.addEventListener('submit', function (event) {
@@ -39,6 +42,7 @@ function addBook() {
     books.push(bookObject);
 
     document.dispatchEvent(new Event(RENDER_EVENT));
+    saveData();
 }
 
 function generateBookId() {
@@ -104,6 +108,7 @@ function removeBook(bookId) {
 
     books.splice(bookTarget, 1);
     document.dispatchEvent(new Event(RENDER_EVENT));
+    saveData();
 }
 
 function findBookIndex(bookId) {
@@ -122,6 +127,7 @@ function manageCompletedBook(bookObject) {
 
     bookTarget.isComplete = !bookObject.isComplete;
     document.dispatchEvent(new Event(RENDER_EVENT));
+    saveData();
 }
 
 function findBook(bookId) {
@@ -131,4 +137,12 @@ function findBook(bookId) {
         }
     }
     return null;
+}
+
+function saveData() {
+    if (isStorageExist()) {
+        const parsed = JSON.stringify(books);
+        localStorage.setItem(STORAGE_KEY, parsed);
+        document.dispatchEvent(new Event(SAVED_EVENT));
+    }
 }
