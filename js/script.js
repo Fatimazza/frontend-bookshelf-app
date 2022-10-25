@@ -11,7 +11,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener(RENDER_EVENT, function () {
     console.log(books);
-    createBookItem();
+
+    const incompleteBookList = document.getElementById('incompleteBookshelfList');
+    incompleteBookList.innerHTML = '';
+
+    for (const bookItem of books) {
+        const bookElement = createBookItem(bookItem);
+        incompleteBookList.append(bookElement);
+    }
 });
 
 function addBook() {
@@ -41,27 +48,22 @@ function generateBookObject(id, title, author, year, isComplete) {
     }
 }
 
-function createBookItem() {
+function createBookItem(bookObject) {
     const textTitle = document.createElement('h3');
-    textTitle.innerText = "Judul Buku"
+    textTitle.innerText = bookObject.title
 
     const textAuthor = document.createElement('p');
-    textAuthor.innerText = "Penulis: Author";
+    textAuthor.innerText = 'Penulis: ' + bookObject.author;
 
     const textYear = document.createElement('p');
-    textYear.innerText = "Tahun: 2020";
+    textYear.innerText = 'Tahun: ' + bookObject.year;
 
     const textContainer = document.createElement('article');
     textContainer.classList.add('book_item');
     textContainer.append(textTitle, textAuthor, textYear);
+    textContainer.setAttribute('id', `book-${bookObject.id}`)
 
-    const incompleteBookList = document.getElementById('incompleteBookshelfList');
-    incompleteBookList.innerHTML = '';
-    incompleteBookList.append(textContainer)
-
-    const isBookCompleted = false;
-
-    if (isBookCompleted) {
+    if (bookObject.isComplete) {
         const incompleteButton = document.createElement('button');
         incompleteButton.classList.add('green');
         incompleteButton.innerText = 'Belum selesai di baca';
@@ -90,6 +92,8 @@ function createBookItem() {
 
         textContainer.append(actionContainer);
     }
+
+    return textContainer;
 }
 
 
