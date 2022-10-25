@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener(RENDER_EVENT, function () {
     console.log(books);
+    createBookItem();
 });
 
 function addBook() {
@@ -39,4 +40,24 @@ function generateBookObject(id, title, author, year, isComplete) {
         isComplete
     }
 }
+
+function createBookItem() {
+    const textTitle = document.createElement('h3');
+    textTitle.innerText = "Judul Buku"
+
+    const textAuthor = document.createElement('p');
+    textAuthor.innerText = "Penulis: Author";
+
+    const textYear = document.createElement('p');
+    textYear.innerText = "Tahun: 2020";
+
+    const textContainer = document.createElement('article');
+    textContainer.classList.add('book_item');
+    textContainer.append(textTitle, textAuthor, textYear);
+
+    const incompleteBookList = document.getElementById('incompleteBookshelfList');
+    incompleteBookList.innerHTML = '';
+    incompleteBookList.append(textContainer)
+}
+
 
