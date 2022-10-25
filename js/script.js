@@ -139,6 +139,14 @@ function findBook(bookId) {
     return null;
 }
 
+function isStorageExist() {
+    if (typeof (Storage) === undefined) {
+        alert('Browser kamu tidak mendukung local storage');
+        return false;
+    }
+    return true;
+}
+
 function saveData() {
     if (isStorageExist()) {
         const parsed = JSON.stringify(books);
