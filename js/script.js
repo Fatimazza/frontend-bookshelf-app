@@ -1,4 +1,5 @@
 const books = [];
+const RENDER_EVENT = 'render-book';
 
 document.addEventListener('DOMContentLoaded', function () {
     const submitForm = document.getElementById('inputBookForm');
@@ -6,6 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
         addBook();
     });
+});
+
+document.addEventListener(RENDER_EVENT, function () {
+    console.log(books);
 });
 
 function addBook() {
@@ -18,7 +23,7 @@ function addBook() {
     const bookObject = generateBookObject(generatedBookId, bookTitle, bookAuthor, bookYear, bookIsComplete);
     books.push(bookObject);
 
-    console.log('Book ' + generatedBookId + ' ' + bookTitle + ' ' + bookAuthor + ' ' + bookYear + ' ' + bookIsComplete);
+    document.dispatchEvent(new Event(RENDER_EVENT));
 }
 
 function generateBookId() {
