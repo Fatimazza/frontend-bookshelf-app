@@ -15,9 +15,16 @@ document.addEventListener(RENDER_EVENT, function () {
     const incompleteBookList = document.getElementById('incompleteBookshelfList');
     incompleteBookList.innerHTML = '';
 
+    const completeBookList = document.getElementById('completeBookshelfList');
+    completeBookList.innerHTML = '';
+
     for (const bookItem of books) {
         const bookElement = createBookItem(bookItem);
-        incompleteBookList.append(bookElement);
+
+        if (!bookItem.isComplete)
+            incompleteBookList.append(bookElement);
+        else
+            completeBookList.append(bookElement);
     }
 });
 
