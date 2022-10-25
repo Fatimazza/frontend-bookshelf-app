@@ -17,7 +17,7 @@ input, button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: orchid;
+    background-color: plum;
     color: white;
 }
 
@@ -39,7 +39,7 @@ main {
 
 .input_section > h2 {
     text-align: center;
-    color: orchid;
+    color: cornflowerblue;
 }
 
 .input_section > form > .input {
@@ -70,7 +70,7 @@ main {
 
 
 .input_section > form > .input > label {
-    color: orchid;
+    color: cornflowerblue;
     font-weight: bold;
 }
 
@@ -81,7 +81,7 @@ main {
 }
 
 .input_section > form > .input_inline > label {
-    color: orchid;
+    color: cornflowerblue;
     font-weight: bold;
     margin-right: 10px;
 }
@@ -97,7 +97,7 @@ main {
 }
 
 .search_section > h2 {
-    color: orchid;
+    color: cornflowerblue;
 }
 
 .search_section > form {
@@ -161,11 +161,11 @@ main {
 }
 
 .book_shelf > .book_list > .book_item > .action > .green {
-    background-color: darkgreen;
+    background-color: skyblue;
     color: white;
 }
 
 .book_shelf > .book_list > .book_item > .action > .red {
-    background-color: darkred;
+    background-color: palevioletred;
     color: white;
 }
