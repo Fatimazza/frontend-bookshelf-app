@@ -52,12 +52,12 @@ function generateBookObject(id, title, author, year, isComplete) {
         author,
         year,
         isComplete
-    }
+    };
 }
 
 function createBookItem(bookObject) {
     const textTitle = document.createElement('h3');
-    textTitle.innerText = bookObject.title
+    textTitle.innerText = bookObject.title;
 
     const textAuthor = document.createElement('p');
     textAuthor.innerText = 'Penulis: ' + bookObject.author;
@@ -68,7 +68,7 @@ function createBookItem(bookObject) {
     const textContainer = document.createElement('article');
     textContainer.classList.add('book_item');
     textContainer.append(textTitle, textAuthor, textYear);
-    textContainer.setAttribute('id', `book-${bookObject.id}`)
+    textContainer.setAttribute('id', `book-${bookObject.id}`);
 
     const completeStatusButton = document.createElement('button');
     completeStatusButton.classList.add('green');
