@@ -55,11 +55,11 @@ function createBookItem() {
     textContainer.classList.add('book_item');
     textContainer.append(textTitle, textAuthor, textYear);
 
-    const incompleteBookList = document.getElementById('completeBookshelfList');
+    const incompleteBookList = document.getElementById('incompleteBookshelfList');
     incompleteBookList.innerHTML = '';
     incompleteBookList.append(textContainer)
 
-    const isBookCompleted = true;
+    const isBookCompleted = false;
 
     if (isBookCompleted) {
         const incompleteButton = document.createElement('button');
@@ -73,6 +73,20 @@ function createBookItem() {
         const actionContainer = document.createElement('div');
         actionContainer.classList.add('action');
         actionContainer.append(incompleteButton, deleteButton);
+
+        textContainer.append(actionContainer);
+    } else {
+        const completeButton = document.createElement('button');
+        completeButton.classList.add('green');
+        completeButton.innerText = 'Selesai di baca';
+
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('red');
+        deleteButton.innerText = 'Hapus';
+
+        const actionContainer = document.createElement('div');
+        actionContainer.classList.add('action');
+        actionContainer.append(completeButton, deleteButton);
 
         textContainer.append(actionContainer);
     }
