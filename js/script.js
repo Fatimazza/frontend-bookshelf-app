@@ -76,6 +76,10 @@ function createBookItem(bookObject) {
         completeStatusButton.innerText = 'Belum selesai di baca' :
         completeStatusButton.innerText = 'Selesai di baca';
 
+    completeStatusButton.addEventListener('click', function () {
+        manageCompletedBook(bookObject);
+    });
+
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('red');
     deleteButton.innerText = 'Hapus';
@@ -111,5 +115,20 @@ function findBookIndex(bookId) {
     return -1;
 }
 
+function manageCompletedBook(bookObject) {
+    const bookTarget = findBook(bookObject.id);
 
+    if (bookTarget == null) return;
 
+    bookTarget.isComplete = !bookObject.isComplete;
+    document.dispatchEvent(new Event(RENDER_EVENT));
+}
+
+function findBook(bookId) {
+    for (const bookItem of books) {
+        if (bookItem.id === bookId) {
+            return bookItem;
+        }
+    }
+    return null;
+}
