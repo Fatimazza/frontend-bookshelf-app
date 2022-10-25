@@ -15,3 +15,14 @@ function addBook() {
 function generateBookId() {
     return +new Date();
 }
+
+function generateBookObject(id, title, author, year, isComplete) {
+    return {
+        id,
+        title,
+        author,
+        year,
+        isComplete
+    }
+}
+
