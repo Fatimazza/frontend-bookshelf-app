@@ -55,9 +55,27 @@ function createBookItem() {
     textContainer.classList.add('book_item');
     textContainer.append(textTitle, textAuthor, textYear);
 
-    const incompleteBookList = document.getElementById('incompleteBookshelfList');
+    const incompleteBookList = document.getElementById('completeBookshelfList');
     incompleteBookList.innerHTML = '';
     incompleteBookList.append(textContainer)
+
+    const isBookCompleted = true;
+
+    if (isBookCompleted) {
+        const incompleteButton = document.createElement('button');
+        incompleteButton.classList.add('green');
+        incompleteButton.innerText = 'Belum selesai di baca';
+
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('red');
+        deleteButton.innerText = 'Hapus';
+
+        const actionContainer = document.createElement('div');
+        actionContainer.classList.add('action');
+        actionContainer.append(incompleteButton, deleteButton);
+
+        textContainer.append(actionContainer);
+    }
 }
 
 
