@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function addBook() {
-    const generatedID = generateBookId();
+    const generatedBookId = generateBookId();
     console.log('Function Add Book called');
-    console.log('Book id ' + generateBookId);
+    console.log('Book id ' + generatedBookId);
 }
 
 function generateBookId() {
