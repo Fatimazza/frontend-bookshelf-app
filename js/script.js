@@ -70,35 +70,21 @@ function createBookItem(bookObject) {
     textContainer.append(textTitle, textAuthor, textYear);
     textContainer.setAttribute('id', `book-${bookObject.id}`)
 
-    if (bookObject.isComplete) {
-        const incompleteButton = document.createElement('button');
-        incompleteButton.classList.add('green');
-        incompleteButton.innerText = 'Belum selesai di baca';
+    const completeStatusButton = document.createElement('button');
+    completeStatusButton.classList.add('green');
+    bookObject.isComplete ?
+        completeStatusButton.innerText = 'Belum selesai di baca' :
+        completeStatusButton.innerText = 'Selesai di baca';
 
-        const deleteButton = document.createElement('button');
-        deleteButton.classList.add('red');
-        deleteButton.innerText = 'Hapus';
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('red');
+    deleteButton.innerText = 'Hapus';
 
-        const actionContainer = document.createElement('div');
-        actionContainer.classList.add('action');
-        actionContainer.append(incompleteButton, deleteButton);
+    const actionContainer = document.createElement('div');
+    actionContainer.classList.add('action');
+    actionContainer.append(completeStatusButton, deleteButton);
 
-        textContainer.append(actionContainer);
-    } else {
-        const completeButton = document.createElement('button');
-        completeButton.classList.add('green');
-        completeButton.innerText = 'Selesai di baca';
-
-        const deleteButton = document.createElement('button');
-        deleteButton.classList.add('red');
-        deleteButton.innerText = 'Hapus';
-
-        const actionContainer = document.createElement('div');
-        actionContainer.classList.add('action');
-        actionContainer.append(completeButton, deleteButton);
-
-        textContainer.append(actionContainer);
-    }
+    textContainer.append(actionContainer);
 
     return textContainer;
 }
